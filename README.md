@@ -1,58 +1,73 @@
-# Turborepo Tailwind CSS starter
+# Social App
 
-This is an official starter Turborepo.
+A modern social networking application built with cutting-edge technologies.
 
-## Using this example
+## Table of Contents
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [License](#license)
 
-Run the following command:
+## Tech Stack
 
-```sh
-npx create-turbo@latest -e with-tailwind
-```
+### Backend
+- Express.js (Node.js framework)
+- Redis (for caching)
+- PostgreSQL (database)
+- Prisma (ORM)
 
-## What's inside?
+### Frontend
+- Next.js (React framework)
+- Tailwind CSS
 
-This Turborepo includes the following packages/apps:
+### Development
+- Turborepo (monorepo build system)
+- Yarn (package manager)
 
-### Apps and Packages
+## Project Structure
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+This project is set up as a monorepo using Turborepo and Yarn workspaces. The main directories are:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `apps/`: Contains the main applications
+  - `api/`: The Express.js API
+  - `web/`: The Next.js web application
+- `packages/`: Shared packages and configurations
+  - `ui/`: Shared UI components
+  - `prisma/`: Shared Prisma schema and migrations
+  - `config-tailwind/`: Shared Tailwind configuration
+  - `config-eslint/`: Shared ESLint configurations
+  - `config-prettier/`: Shared Prettier configuration
+  - `config-tsconfig/`: Shared TypeScript configurations
 
-### Building packages/ui
+## Getting Started
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/kafeindev/social-app.git
+   cd social-app
+   ```
 
-- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
+2. **Install dependencies:**
+   ```bash
+   yarn install
+   ```
 
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
+3. **Set up environment variables:**
+   Create a `.env` file in the root directory and add necessary environment variables. (See `.env.example` for required variables)
 
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
+4. **Set up Prisma:**
+   ```bash
+   cd packages/prisma
+   npx prisma generate
+   npx prisma migrate dev
+   cd ../..
+   ```
 
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
-```
+5. **Run the development server:**
+   ```bash
+   yarn dev
+   ```
 
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
+## License
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

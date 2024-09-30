@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@social-media/web",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,16 +10,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/ui": "*",
+    "@social-media/ui": "*",
     "next": "^14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "*",
-    "@repo/typescript-config": "*",
+    "@social-media/eslint-config": "*",
+    "@social-media/tailwind-config": "*",
+    "@social-media/typescript-config": "*",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
