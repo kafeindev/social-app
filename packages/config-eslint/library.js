@@ -6,6 +6,8 @@ module.exports = {
   extends: [
     "@vercel/style-guide/eslint/node",
     "@vercel/style-guide/eslint/typescript",
+    "plugin:prettier/recommended",
+    "turbo",
   ].map(require.resolve),
   parserOptions: {
     project,
