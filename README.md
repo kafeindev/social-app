@@ -11,7 +11,7 @@ A modern social networking application built with cutting-edge technologies.
 ## Tech Stack
 
 ### Backend
-- Express.js (Node.js framework)
+- NestJS (Node.js framework)
 - Redis (for caching)
 - PostgreSQL (database)
 - Prisma (ORM)
@@ -29,7 +29,7 @@ A modern social networking application built with cutting-edge technologies.
 This project is set up as a monorepo using Turborepo and Yarn workspaces. The main directories are:
 
 - `apps/`: Contains the main applications
-  - `api/`: The Express.js API
+  - `api/`: The NestJS API
   - `web/`: The Next.js web application
 - `packages/`: Shared packages and configurations
   - `ui/`: Shared UI components

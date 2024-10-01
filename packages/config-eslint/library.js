@@ -2,29 +2,28 @@ const { resolve } = require("node:path");
 
 const project = resolve(process.cwd(), "tsconfig.json");
 
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "plugin:prettier/recommended",
-    "turbo",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
-  },
+  extends: ["./base.js"],
+  plugins: ["only-warn"],
   globals: {
     React: true,
     JSX: true,
+  },
+  env: {
+    node: true,
   },
   settings: {
     "import/resolver": {
       typescript: {
         project,
       },
-      node: {
-        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
-      },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/"],
+  ignorePatterns: [".*.js", "node_modules/", "dist/"],
+  overrides: [
+    {
+      files: ["*.js?(x)", "*.ts?(x)"],
+    },
+  ],
 };

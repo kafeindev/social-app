@@ -3,14 +3,15 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "db:migrate:deploy": "turbo run db:migrate:deploy",
-    "db:push": "turbo run db:push",
-    "db:seed": "turbo run db:seed",
     "dev": "turbo dev",
+    "test": "turbo test",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
     "generate": "turbo generate",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

@@ -1,0 +1,7 @@
+{
+  "extends": "@social-media/typescript-config/nestjs.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist",
+  }
+}

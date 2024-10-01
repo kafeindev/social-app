@@ -1,0 +1,12 @@
+{
+  "name": "@social-media/jest-config",
+  "version": "0.0.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "next": "^14.2.13"
+  }
+}
