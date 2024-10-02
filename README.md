@@ -29,7 +29,7 @@ A modern social networking application built with cutting-edge technologies.
 This project is set up as a monorepo using Turborepo and Yarn workspaces. The main directories are:
 
 - `apps/`: Contains the main applications
-  - `api/`: The NestJS API
+  - `api/`: The Nest.js API
   - `web/`: The Next.js web application
 - `packages/`: Shared packages and configurations
   - `ui/`: Shared UI components
