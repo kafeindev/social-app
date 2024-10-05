@@ -11,7 +11,7 @@ A modern social networking application built with cutting-edge technologies.
 ## Tech Stack
 
 ### Backend
-- NestJS (Node.js framework)
+- Nest.js (Node.js framework)
 - Redis (for caching)
 - PostgreSQL (database)
 - Prisma (ORM)
