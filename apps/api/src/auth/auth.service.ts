@@ -74,7 +74,20 @@ export class AuthService {
   }
 
   async refreshTokens(refreshTokensDto: RefreshTokensDto) {
-    return refreshTokensDto;
+    const { refreshToken } = refreshTokensDto;
+
+    const token = await this.prismaService.token.findFirst({
+      where: { token: refreshToken, type: TokenType.REFRESH },
+    });
+
+    if (!token || token.expiresAt < new Date()) {
+      throw new UnauthorizedException("Invalid refresh token");
+    }
+
+    const user = await this.userService.find({ id: token.userId });
+    const authTokens = await this.createAuthTokens(user.id);
+
+    return { user, ...authTokens };
   }
 
   async createAuthTokens(userId: number): Promise<{

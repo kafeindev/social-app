@@ -1,5 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
+import { Body, Controller, Get, Post } from "@nestjs/common";
 import { User as UserModel } from "@prisma/client";
 
 import { User } from "~/shared/decorators/user.decorator";
@@ -39,7 +38,6 @@ export class AuthController {
   }
 
   @Get("me")
-  @UseGuards(AuthGuard("jwt"))
   async getCurrentUser(@User() user: UserModel) {
     return user;
   }
