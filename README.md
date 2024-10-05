@@ -11,7 +11,7 @@ A modern social networking application built with cutting-edge technologies.
 ## Tech Stack
 
 ### Backend
-- NestJS (Node.js framework)
+- Nest.js (Node.js framework)
 - Redis (for caching)
 - PostgreSQL (database)
 - Prisma (ORM)
@@ -53,7 +53,11 @@ This project is set up as a monorepo using Turborepo and Yarn workspaces. The ma
    ```
 
 3. **Set up environment variables:**
-   Create a `.env` file in the root directory and add necessary environment variables. (See `.env.example` for required variables)
+   Create `.env` files in the following directories:
+   - `apps/api/.env`
+   - `packages/database/.env`
+
+   Copy the contents from `.env.example` and fill in the values.
 
 4. **Set up Prisma:**
    ```bash
