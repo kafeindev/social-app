@@ -14,15 +14,13 @@
     },
     "test": {},
     "lint": {},
-    "generate": {
-      "dependsOn": ["^generate"],
-      "cache": false
-    },
     "clean": {
       "cache": false
     },
     "db:migrate:deploy": {},
-    "db:push": {},
-    "db:seed": {}
+    "db:migrate:dev": {},
+    "db:seed": {},
+    "prisma:generate": {},
+    "prisma:studio": {}
   }
 }
