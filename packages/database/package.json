@@ -9,13 +9,14 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "tsx src/seed.ts",
+    "prisma:studio": "prisma studio",
+    "prisma:generate": "prisma generate",
     "dev": "tsup src/* --watch",
     "format": "prisma format",
-    "generate": "prisma generate",
     "lint": "eslint . --max-warnings 0",
+    "generate": "prisma generate",
     "prebuild": "npm run generate",
-    "predev": "npm run generate",
-    "studio": "prisma studio"
+    "predev": "npm run generate"
   },
   "dependencies": {
     "@prisma/client": "^5.20.0"

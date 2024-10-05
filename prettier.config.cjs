@@ -14,6 +14,7 @@ module.exports = {
     "^server-only|client-only$",
     "",
     "^(express/(.*)$)|^(express$)",
+    "^(nestjs/(.*)$)|^(nestjs$)",
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",

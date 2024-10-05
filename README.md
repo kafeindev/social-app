@@ -57,9 +57,8 @@ This project is set up as a monorepo using Turborepo and Yarn workspaces. The ma
 
 4. **Set up Prisma:**
    ```bash
-   yarn generate
-   yarn db:push
-   yarn db:migrate:deploy
+   yarn db:migrate:dev
+   yarn db:seed
    ```
 
 5. **Run the development server:**
