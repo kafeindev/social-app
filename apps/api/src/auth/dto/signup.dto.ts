@@ -20,9 +20,15 @@ export class SignupDto {
   @MinLength(3, { message: "Username must be at least 3 characters long" })
   @MaxLength(20, { message: "Username must be at most 20 characters long" })
   @Matches(/^[a-zA-Z0-9_]+$/, {
-    message: "Username can only contain letters, numbers, underscores.",
+    message: "Username can only contain letters, numbers, underscores",
   })
   username: string;
+
+  @IsString()
+  @IsNotEmpty({ message: "Display name is required" })
+  @MinLength(3, { message: "Display name must be at least 3 characters long" })
+  @MaxLength(32, { message: "Display name must be at most 32 characters long" })
+  displayName: string;
 
   @IsString()
   @IsNotEmpty({ message: "Password is required" })

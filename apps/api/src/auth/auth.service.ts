@@ -9,11 +9,10 @@ import { TokenType, User as UserModel } from "@prisma/client";
 import { compare, hash } from "bcrypt";
 import moment from "moment";
 
-import { PrismaService } from "~/shared/services/prisma.service";
+import { PrismaService } from "~/shared/services/prisma/prisma.service";
 
 import { UserService } from "../user/user.service";
-import { LoginDto, RefreshTokensDto, SignupDto } from "./dto";
-import { LogoutDto } from "./dto/logout.dto";
+import { LoginDto, LogoutDto, RefreshTokensDto, SignupDto } from "./dto";
 
 @Injectable()
 export class AuthService {
@@ -25,20 +24,23 @@ export class AuthService {
   ) {}
 
   async signup(signupDto: SignupDto) {
-    const { email, username, password } = signupDto;
+    const { email, username, displayName, password } = signupDto;
 
-    const userExists = await this.userService.find({
+    const userExists = await this.userService.findUser({
       OR: [{ email }, { username }],
     });
     if (userExists) {
-      throw new ConflictException("User already exists");
+      throw new ConflictException(
+        "User already exists, please try another email or username."
+      );
     }
 
     const hashedPassword = await hash(password, 10);
 
-    const user = await this.userService.create({
+    const user = await this.userService.createUser({
       email,
       username,
+      displayName,
       password: {
         create: {
           hash: hashedPassword,
@@ -84,7 +86,7 @@ export class AuthService {
       throw new UnauthorizedException("Invalid refresh token");
     }
 
-    const user = await this.userService.find({ id: token.userId });
+    const user = await this.userService.findUser({ id: token.userId });
     const authTokens = await this.createAuthTokens(user.id);
 
     return { user, ...authTokens };
@@ -172,7 +174,7 @@ export class AuthService {
     email: string,
     password: string
   ): Promise<UserModel | null> {
-    const user = await this.userService.find({ email }, { password: true });
+    const user = await this.userService.findUser({ email }, { password: true });
 
     if (!user || !user.password) {
       throw new UnauthorizedException("Invalid credentials");

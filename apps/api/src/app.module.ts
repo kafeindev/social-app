@@ -4,7 +4,9 @@ import { CacheModule } from "@nestjs/cache-manager";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { APP_GUARD } from "@nestjs/core";
+import { MulterModule } from "@nestjs/platform-express";
 import { ThrottlerModule } from "@nestjs/throttler";
+import { memoryStorage } from "multer";
 import {
   AcceptLanguageResolver,
   HeaderResolver,
@@ -18,7 +20,7 @@ import { UserModule } from "~/user/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { CacheConfig } from "./shared/configs/cache.config";
 import { JwtAuthGuard } from "./shared/guards/auth.guard";
-import { PrismaModule } from "./shared/services/prisma.module";
+import { PrismaModule } from "./shared/services/prisma/prisma.module";
 
 @Module({
   imports: [
@@ -52,6 +54,12 @@ import { PrismaModule } from "./shared/services/prisma.module";
     PrismaModule,
     AuthModule,
     UserModule,
+    MulterModule.register({
+      storage: memoryStorage(),
+      limits: {
+        fileSize: 5 * 1024 * 1024, // 5MB
+      },
+    }),
   ],
   providers: [
     {

@@ -4,7 +4,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import { TokenType } from "@prisma/client";
 import { ExtractJwt, Strategy } from "passport-jwt";
 
-import { PrismaService } from "~/shared/services/prisma.service";
+import { PrismaService } from "~/shared/services/prisma/prisma.service";
 import { User as UserModel } from "@prisma/client";
 
 @Injectable()

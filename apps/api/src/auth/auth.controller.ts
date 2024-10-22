@@ -1,12 +1,11 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { User as UserModel } from "@prisma/client";
 
+import { Public } from "~/shared/decorators/public.decorator";
 import { User } from "~/shared/decorators/user.decorator";
 
 import { AuthService } from "./auth.service";
-import { LoginDto, RefreshTokensDto, SignupDto } from "./dto";
-import { LogoutDto } from "./dto/logout.dto";
-import { Public } from "~/shared/decorators/public.decorator";
+import { LoginDto, LogoutDto, RefreshTokensDto, SignupDto } from "./dto";
 
 @Controller({
   version: "1",
