@@ -33,7 +33,7 @@ This project is set up as a monorepo using Turborepo and Yarn workspaces. The ma
   - `web/`: The Next.js web application
 - `packages/`: Shared packages and configurations
   - `ui/`: Shared UI components
-  - `prisma/`: Shared Prisma schema and migrations
+  - `database/`: Shared Prisma schema and migrations
   - `config-tailwind/`: Shared Tailwind configuration
   - `config-eslint/`: Shared ESLint configurations
   - `config-prettier/`: Shared Prettier configuration
